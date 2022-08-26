@@ -199,3 +199,22 @@ jekyll-archives:
   permalinks:
     tag: /tags/:name/
     category: /categories/:name/
+
+## jekyll compose plugin settings
+jekyll_compose:
+  default_front_matter:
+    drafts:
+      author: aold619
+      description:
+      image:
+      category:
+      tags:
+    posts:
+      author: aold619
+      description:
+      image:
+      category:
+      tags:
+      published: false
+      sitemap: false
+

@@ -1,7 +1,7 @@
 ---
 title: "使用 Jekyll 部署 Github Pages"
 author: aold619
-date: 2022-08-25 22:00
+date: 2022-08-25 22:00 +0800
 categories: [Tutorial]
 tags: [tutorial, github pages]
 ---

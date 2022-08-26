@@ -1,7 +1,7 @@
 ---
 title: "二分查找 Binary Search"
 author: aold619
-date: 2022-08-25 18:00
+date: 2022-08-25 18:00 +0800
 categories: [Note]
 tags: [algorithm, leetcode]
 ---
