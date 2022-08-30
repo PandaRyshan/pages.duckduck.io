@@ -23,7 +23,7 @@ gem install bundler jekyll
 -e JEKYLL_UID=1001 -e JEKYLL_GID=1001
 ```
 
-jekyll 初始化博客程序:
+jekyll 初始化博客程序
 ```shell
 jekyll new your-blog-name
 cd your-blog-name
@@ -31,7 +31,7 @@ cd your-blog-name
 
 jekyll 会自动生成项目文件，建议使用自己的 github pages repo 的名称，或将要绑定的自定义域名。github pages 的默认域名是 `username.github.io`，也可以使用它。
 
-## 安装 theme：
+## 安装 theme
 
 jekyll 官网的 resources 链接: [Resources](https://jekyllrb.com/resources/)
 

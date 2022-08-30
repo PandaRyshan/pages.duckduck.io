@@ -13,7 +13,7 @@ tags: [algorithm, leetcode]
 * 存储在数组中
 * 有序排列（无序使用二分法可以用作猜答案）
 
-## 代码模板：
+## 代码模板
 
 ```java
 start = 0; end = len - 1;
@@ -28,7 +28,7 @@ while (start <= end) {
 return
 ```
 
-## 经典题型：
+## 经典题型
 * [第一个错误版本](https://leetcode.cn/problems/first-bad-version/)
 * [分割数组的最大值](https://leetcode.cn/problems/split-array-largest-sum/)
 * [最长递增子序列](https://leetcode.cn/problems/longest-increasing-subsequence/)
