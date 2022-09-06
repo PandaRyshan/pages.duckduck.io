@@ -1,14 +1,10 @@
 ---
-layout: post
 title: Add PrivateKey entry to HTTP SSL Keystore - Solve ES Unable generate token Error
 date: 2022-09-06 20:23 +0800
 author: aold619
 description: Follow this post to solve the ERROR: Unable to create an enrollment token. Elasticsearch node HTTP layer SSL configuration Keystore doesn't contain any PrivateKey entries where the associated certificate is a CA certificate
-image:
-category: ["Tutorial"]
-tags: ["tutorial", "elasticsearch", "security"]
-published: true
-sitemap: false
+categories: [Tutorial]
+tags: [tutorial, elasticsearch, security]
 ---
 
 ## Problem
@@ -32,6 +28,7 @@ From the doc [Update certs with different CA](https://www.elastic.co/guide/en/el
 ```shell
 ./bin/elasticsearch-certutil ca --pem
 ```
+
 Enter a name for the compressed output file that will contain your certificate and key, or accept the default name of `elastic-stack-ca.zip`. Unzip the output file. The resulting directory contains a CA certificate (`ca.crt`) and a private key (`ca.key`).
 
 ### Step 2. Bundle the PrivateKey and add it to HTTP PKCS
