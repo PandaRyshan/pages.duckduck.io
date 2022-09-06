@@ -6,7 +6,7 @@ author: aold619
 description: Follow this post to solve the ERROR: Unable to create an enrollment token. Elasticsearch node HTTP layer SSL configuration Keystore doesn't contain any PrivateKey entries where the associated certificate is a CA certificate
 image:
 category: ["Tutorial"]
-tags: ["toturial", "elasticsearch", "security"]
+tags: ["tutorial", "elasticsearch", "security"]
 published: true
 sitemap: false
 ---
