@@ -1,10 +1,10 @@
 ---
-title: Add PrivateKey entry to HTTP SSL Keystore - Solve ES Unable generate token Error
+title: "Add PrivateKey entry to HTTP SSL Keystore - Solve ES Unable generate token Error"
 date: 2022-09-06 20:23 +0800
 author: aold619
-description: Follow this post to solve the ERROR: Unable to create an enrollment token. Elasticsearch node HTTP layer SSL configuration Keystore doesn't contain any PrivateKey entries where the associated certificate is a CA certificate
+description: "Follow this post to solve the ERROR: Unable to create an enrollment token. Elasticsearch node HTTP layer SSL configuration Keystore doesn't contain any PrivateKey entries where the associated certificate is a CA certificate."
 categories: [Tutorial]
-tags: [tutorial, elasticsearch, security]
+tags: [tutorial, elasticsearch]
 ---
 
 ## Problem
