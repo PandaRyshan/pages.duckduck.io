@@ -7,7 +7,7 @@ description: Follow this post to solve the ERROR: Unable to create an enrollment
 image:
 category: ["Tutorial"]
 tags: ["toturial", "elasticsearch", "security"]
-published: false
+published: true
 sitemap: false
 ---
 
