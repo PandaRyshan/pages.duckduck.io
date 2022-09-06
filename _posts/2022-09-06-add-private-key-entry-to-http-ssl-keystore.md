@@ -15,8 +15,6 @@ Yesterday I installed Elasticsearch for the first time, and after I configured t
 
 I searched some pages and didn't get the answer, then I found a [discussion](https://stackoverflow.com/questions/24974324/import-certificate-as-privatekeyentry) on StackOverflow, and it fixed my problem. I think maybe I should share my experience here with those newbies like me.
 
-If I put the discussion in the wrong category, please help me move it. Thanks.
-
 ---
 
 ## Solution
