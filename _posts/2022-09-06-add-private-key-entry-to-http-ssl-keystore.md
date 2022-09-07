@@ -57,15 +57,10 @@ keytool -importkeystore -destkeystore <filename-http-PKCS12> -srckeystore <filen
 This step changes the CA Cert that was automatically imported into the original HTTP Keystore as TrustCertEntry to PrivateKeyEntry, and this is exactly what that ERROR tells us to do.
 
 > Importing keystore config/certs/es-ca.p12 to config/certs/http.p12...
->
 > Enter destination keystore password:
->
 > Enter source keystore password:
->
 > Existing entry alias ca exists, overwrite? [no]: yes
->
 > Entry for alias ca successfully imported.
->
 > Import command completed: 1 entries successfully imported, 0 entries failed or cancelled
 
 ## Check the result
@@ -79,9 +74,7 @@ keytool -keystore <filename-HTTP-PKCS12.p12> -list
 The result should contains two PrivateKey entries like:
 
 > Keystore type: PKCS12
->
 > Keystore provider: SUN
->
 > Your keystore contains 2 entries
 >
 > ca, Sep 5, 2022, PrivateKeyEntry
