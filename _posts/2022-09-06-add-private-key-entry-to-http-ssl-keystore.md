@@ -23,6 +23,7 @@ The results may be as follow:
 
 > ca, Sep 6, 2022, trustedCertEntry,
 > Certificate fingerprint (SHA-256): 25:27:7D:EE:FE:F6:54:57:47:BE:B5:10:C4:90:DF:28:BF:1B:3B:F9:5E:47:F5:34:5F:03:38:1E:84:0A:23:E7
+
 > http, Sep 6, 2022, PrivateKeyEntry,
 > Certificate fingerprint (SHA-256): D4:EF:60:2C:E5:2D:4C:A8:33:C0:49:44:F4:B5:38:19:92:97:72:CB:5D:85:20:A4:97:9B:90:24:D0:0C:D1:FB
 
