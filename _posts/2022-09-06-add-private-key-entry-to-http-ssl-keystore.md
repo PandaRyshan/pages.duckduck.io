@@ -1,5 +1,5 @@
 ---
-title: "Add PrivateKey to HTTP PKCS - Unable to create enrollment token Error"
+title: "Import CA Cert as PrivateKeyEntry - Solve Unable to create enrollment token Error"
 date: 2022-09-06 20:23 +0800
 author: aold619
 description: "Follow this post to solve the ERROR: Unable to create an enrollment token. Elasticsearch node HTTP layer SSL configuration Keystore doesn't contain any PrivateKey entries where the associated certificate is a CA certificate."
@@ -79,7 +79,6 @@ Now start the node, and re-generate your token:
 
 ---
 
-[Here is an issue that track the problem.](https://github.com/elastic/elasticsearch/issues/89017)
-[This is same content post on elastic discuss.](https://discuss.elastic.co/t/import-ca-cert-as-privatekeyentry-to-http-keystore-solve-unable-to-create-enrollment-token-error/)
-[This is same content Q&A in Chinese.](https://segmentfault.com/q/1010000041427143/a-1020000042440364)
+Offical issue has is tracking the problem. [Generating enrollment token for Kibana should not require the CA key · Issue #89017 · elastic/elasticsearch · GitHub](https://github.com/elastic/elasticsearch/issues/89017)
 
+Here is one Q&A in Chinese. [elasticsearch-create-enrollment-token证书https环境下无法生成口令](https://segmentfault.com/q/1010000041427143/a-1020000042440364)
