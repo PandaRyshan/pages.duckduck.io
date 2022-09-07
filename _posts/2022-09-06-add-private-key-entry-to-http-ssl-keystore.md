@@ -9,17 +9,37 @@ tags: [tutorial, elasticsearch]
 
 ## Problem
 
-Yesterday I installed Elasticsearch for the first time, and after I configured the security manully according to the docs: [Basic Security](https://www.elastic.co/guide/en/elasticsearch/reference/master/security-basic-setup.html) / [Basic Security plus HTTPS](https://www.elastic.co/guide/en/elasticsearch/reference/master/security-basic-setup-https.html), I try to generate token for Kibana, and I met the error:
+After installed Elasticsearch and configured the security manully according to the docs: [Basic Security](https://www.elastic.co/guide/en/elasticsearch/reference/master/security-basic-setup.html) / [Basic Security plus HTTPS](https://www.elastic.co/guide/en/elasticsearch/reference/master/security-basic-setup-https.html), we may met the error:
 
 > ERROR: Unable to create an enrollment token. Elasticsearch node HTTP layer SSL configuration Keystore doesn't contain any PrivateKey entries where the associated certificate is a CA certificate
 
-I searched some pages and didn't get the answer, then I found a [discussion](https://stackoverflow.com/questions/24974324/import-certificate-as-privatekeyentry) on StackOverflow, and it solved my problem. I think maybe I should share my experience with those newbies like me.
+The error says that the Keystore for the HTTPS doesn't contain a CA Cert as PrivateKeyEntry type, let's check:
+
+```shell
+keytool -keystore config/certs/<filename-http-pkcs12-keystore.p12> -list
+```
+
+The results may be as follow:
+
+> ca, Sep 6, 2022, trustedCertEntry,
+> Certificate fingerprint (SHA-256): 25:27:7D:EE:FE:F6:54:57:47:BE:B5:10:C4:90:DF:28:BF:1B:3B:F9:5E:47:F5:34:5F:03:38:1E:84:0A:23:E7
+> http, Sep 6, 2022, PrivateKeyEntry,
+> Certificate fingerprint (SHA-256): D4:EF:60:2C:E5:2D:4C:A8:33:C0:49:44:F4:B5:38:19:92:97:72:CB:5D:85:20:A4:97:9B:90:24:D0:0C:D1:FB
+
+The *TrustedCertEntry* is automatically imported into HTTP PKCS12 Keystore as a CA Cert, that is from the Keystore we generated following [Basic Security](https://www.elastic.co/guide/en/elasticsearch/reference/master/security-basic-setup.html).
+
+But ES need a *PrivateKeyEntry* like:
+
+> http_ca, Sep 6, 2022, PrivateKeyEntry,
+> Certificate fingerprint (SHA-256): 9E:56:B1:38:F7:49:C7:7D:07:F0:E1:8A:D6:EC:9B:56:DF:86:7D:D6:90:46:86:77:99:6B:D1:9E:9C:4F:F0:03
+
+So let's replace *TrustedCertEntry* with *PrivateKeyEntry*.
 
 ---
 
 ## Solution
 
-### Step 1. Generate Keystore contains CA Cert and HTTP Keystore [optional]
+### Step 1. Generate Keystore contains CA Cert and HTTP Keystore
 
 ***Note:*** *Usually we have done this step, so if you didn't do anything else to try to change these Keystores, skip this step.*
 
