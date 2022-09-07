@@ -42,7 +42,7 @@ So let's replace *TrustedCertEntry* with *PrivateKeyEntry*.
 
 ### Step 1. Generate Keystore contains CA Cert and HTTP Keystore
 
-***Note:*** *Usually we have done this step, so if you didn't do anything else to try to change these Keystores, skip this step.*
+***Note:*** *Usually we have done this step, so if you didn't do anything else to change these Keystores, skip this step.*
 
 Following [Basic Security](https://www.elastic.co/guide/en/elasticsearch/reference/master/security-basic-setup.html) we will get a PKCS12 Keystore containing CA Cert, default filename is **elastic-stack-ca.p12**.
 
