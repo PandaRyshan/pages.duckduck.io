@@ -7,6 +7,8 @@ categories: [Tutorial]
 tags: [tutorial, elasticsearch]
 ---
 
+*中文版本:* [elasticsearch-create-enrollment-token证书https环境下无法生成口令](https://segmentfault.com/q/1010000041427143/a-1020000042440364)
+
 ## Problem
 
 After installed Elasticsearch and configured the security manully according to the docs: [Basic Security](https://www.elastic.co/guide/en/elasticsearch/reference/master/security-basic-setup.html) / [Basic Security plus HTTPS](https://www.elastic.co/guide/en/elasticsearch/reference/master/security-basic-setup-https.html), we may met the error:
@@ -115,4 +117,3 @@ Now start the node, and re-generate your token:
 
 Offical issue has is tracking the problem. [Generating enrollment token for Kibana should not require the CA key · Issue #89017 · elastic/elasticsearch · GitHub](https://github.com/elastic/elasticsearch/issues/89017)
 
-Here is one Q&A in Chinese. [elasticsearch-create-enrollment-token证书https环境下无法生成口令](https://segmentfault.com/q/1010000041427143/a-1020000042440364)
