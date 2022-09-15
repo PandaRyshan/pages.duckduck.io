@@ -7,7 +7,7 @@ categories: [Tutorial]
 tags: [tutorial, elasticsearch]
 ---
 
-*中文版本:* [elasticsearch-create-enrollment-token证书https环境下无法生成口令](https://segmentfault.com/q/1010000041427143/a-1020000042440364)
+*中文版本: [elasticsearch-create-enrollment-token证书https环境下无法生成口令](https://segmentfault.com/q/1010000041427143/a-1020000042440364)*
 
 ## Problem
 
