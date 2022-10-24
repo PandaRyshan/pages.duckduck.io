@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 
-gem "jekyll-theme-chirpy", "~> 5.2.1", ">= 5.2.1"
+gem "jekyll-theme-chirpy", "~> 5.3", ">= 5.3.0"
 gem 'jekyll-compose', group: [:jekyll_plugins]
 
 group :test do
