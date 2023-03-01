@@ -85,8 +85,8 @@ docker run --rm \
 
 ### 1.3 使用 [Devbox](https://www.jetpack.io/devbox/docs/devbox_examples/stacks/jekyll/)
 
-   1. 新建一个目录并使用 `devbox init` 初始化一个配置文件, 使用 `devbox add 
-   <package_name>` 添加 `ruby_3_1`, `bundler`, `libffi`. 或使用示例 devbox.json 配置:
+   1. 新建一个目录并使用 `devbox init` 初始化一个配置文件, 使用 `devbox add <package_name>` 
+   添加 `ruby_3_1`, `bundler`, `libffi`. 或使用示例 devbox.json 配置:
 
    ```json
    {
