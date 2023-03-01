@@ -89,34 +89,34 @@ docker run --rm \
    添加 `ruby_3_1`, `bundler`, `libffi`. 或使用示例 devbox.json 配置:
 
    ```json
-   {
-     "packages": [
-       "ruby_3_1",
-       "bundler",
-       "libffi"
-     ],
-     "shell": {
-       "init_hook": [],
-       "scripts": {
-         "generate": [
-           "gem install jekyll --no-document",
-           "gem new myblog && cd myblog",
-           "bundle add webrick",
-           "bundle update",
-           "bundle lock",
-           "bundle package",
-           "rm -rf vendor"
-         ],
-         "serve": [
-           "cd myblog",
-           "bundler exec $GEM_HOME/bin/jekyll serve --trace"
-         ]
-       }
-     },
-     "nixpkgs": {
-       "commit": "f80ac848e3d6f0c12c52758c0f25c10c97ca3b62"
-     }
-   }
+{
+  "packages": [
+    "ruby_3_1",
+    "bundler",
+    "libffi"
+  ],
+  "shell": {
+    "init_hook": [],
+    "scripts": {
+      "generate": [
+        "gem install jekyll --no-document",
+        "gem new myblog && cd myblog",
+        "bundle add webrick",
+        "bundle update",
+        "bundle lock",
+        "bundle package",
+        "rm -rf vendor"
+      ],
+      "serve": [
+        "cd myblog",
+        "bundler exec $GEM_HOME/bin/jekyll serve --trace"
+      ]
+    }
+  },
+  "nixpkgs": {
+    "commit": "f80ac848e3d6f0c12c52758c0f25c10c97ca3b62"
+  }
+}
    ```
 
    2. 使用 `devbox shell` 切换到新环境. 如使用示例配置, 可使用 `devbox run generate` 
