@@ -1,7 +1,8 @@
 # The Site Configuration
 
 # Import the theme
-theme: jekyll-theme-chirpy
+#theme: jekyll-theme-chirpy
+remote_theme: cotes2020/jekyll-theme-chirpy
 
 # Change the following value to '/PROJECT_NAME' ONLY IF your site type is GitHub Pages Project sites
 # and doesn't have a custom domain.
@@ -73,7 +74,7 @@ google_analytics:
 #     light  - Use the light color scheme
 #     dark   - Use the dark color scheme
 #
-theme_mode:   # [light|dark]
+theme_mode: dark  # [light|dark]
 
 # The CDN endpoint for images.
 # Notice that once it is assigned, the CDN url
@@ -87,6 +88,9 @@ avatar: assets/img/avatars/surfing_parrot.jpg
 
 # boolean type, the global switch for ToC in posts.
 toc: true
+
+plugins:
+  - jekyll-remote-theme
 
 comments:
   #active: "disqus"        # The global switch for posts comments, e.g., 'disqus'.  Keep it empty means disable

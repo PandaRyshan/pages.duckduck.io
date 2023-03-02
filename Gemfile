@@ -2,6 +2,9 @@
 
 source "https://rubygems.org"
 
+# Themes
+# gem "jekyll-theme-chirpy", "~> 5.5", ">= 5.5.2"
+# gem "jekyll-theme-leaf"
 gem "jekyll-theme-chirpy", "~> 5.5", ">= 5.5.2"
 
 group :test do
@@ -12,6 +15,7 @@ end
 group :jekyll_plugins do
   gem "jekyll-compose"
   gem "kramdown-parser-gfm"
+  gem "jekyll-remote-theme"
 end
 
 # Windows and JRuby does not include zoneinfo files, so bundle the tzinfo-data gem

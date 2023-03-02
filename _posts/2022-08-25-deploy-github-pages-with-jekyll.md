@@ -24,8 +24,8 @@ tags: [tutorial, github pages]
 
 在这个过程中会安装 Ruby 语言环境, RubyGems, Bundler, Jekyll 几个软件。
 
-* RubyGems: Ruby 程序包管理器，类似于 Python 的 Pip；
-* Bundler: 负责包依赖解析；
+* RubyGems：Ruby 程序包管理器，类似于 Python 的 Pip
+* Bundler：负责包依赖解析
 
 ### 使用 Docker
 
@@ -147,9 +147,10 @@ end
 ```
 {: file="Gemfile"}
 
-> * jekyll-remote-theme 插件可以让网站从 repo 中直接拉取主题而不需要下载到本地
+> * [jekyll-remote-theme](https://github.com/benbalter/jekyll-remote-theme) 插件可
+    以让网站在部署时从远程 repo 中直接拉取主题
 > * [jekyll-compose](https://github.com/jekyll/jekyll-compose)
-  是一个用于快速生成 post 的工具，可以配置模板并使用命令简化操作
+    是一个用于快速生成 post 的工具，可以配置模板并使用命令简化操作
 
 ## 安装主题
 
@@ -157,15 +158,18 @@ jekyll 官网的 resources 链接：[Resources](https://jekyllrb.com/resources/)
 其中最后一个站点发布的是付费主题。
 
 找到心仪的主题后进入主题的 github 页面，大多都会在 README 内有详细的说明。
-按着流程走就行。下面会讲一下多数主题的两种安装方式。
+按着流程走就行。下面讲一下适用于大多数主题的两种安装方式。
 
 ### 远程主题插件（推荐）
 
-   这种方式适用于多数主题。但除需改动 `_config.yml` 外也需要改动 `Gemfile` 来满足主题的依赖。
+   适用于 repo 为公开的主题。只需配置 `Gemfile` 满足主题的依赖并在 `_config.yml` 中启用主题即可。
+   方便且易于升级。如需对原主题进行自定义，则在需要的自定义的路径创建同名文件，即可覆盖原主题文件。
 
-   * 在 Gemfile 中添加 `jekyll-remote-theme` 插件依赖
+   * 在 Gemfile 中添加主题和插件依赖
 
      ```shell
+     gem "<theme-repo-name>"
+
      gem "jekyll-remote-theme"
      ```
      {: file="Gemfile"}
@@ -173,7 +177,7 @@ jekyll 官网的 resources 链接：[Resources](https://jekyllrb.com/resources/)
    * 在 `_config.yml` 中的 `plugins` 中启用 `jekyll-remote-theme`，并加载主题的 repo
 
      ```yaml
-     remote_theme: <user>/<theme-repo-name>
+     remote_theme: <github-user>/<theme-repo-name>
 
      plugins:
        - jekyll-remote-theme
@@ -200,9 +204,11 @@ jekyll 官网的 resources 链接：[Resources](https://jekyllrb.com/resources/)
 
 ### 克隆
 
-   下载作者的 repo 或 release，或直接 fork，并基于此修改自己的配置进行部署。这种方式通常 Gem 依赖等所需的
-   文件都是已经准备好的，只需要改动 `_config.yml`，如填写自己的 repo 和 host 即可。缺点是不方便拉取
-   最新的主题变更，未来有可能需要使用 github 提供的 [compare 工具](https://docs.github.com/en/repositories/releasing-projects-on-github/comparing-releases) 比照改动。
+   下载作者的 repo 或 release，或直接 fork，好处是可以基于原主题进行订制。通常 Gem 依赖等所需的
+   文件都已经准备好了，只需要配置 `_config.yml`，如填写自己的 repo 和 host 即可。优点是所有文件
+   都从自己的 repo 读取，更稳定可控。缺点则是不方便拉取原主题的更新，未来有可能需要使用 github 提
+   供的 [compare 工具](https://docs.github.com/en/repositories/releasing-projects-on-github/comparing-releases)
+   比照改动来升级。
 
 ## 配置 github pages
 
