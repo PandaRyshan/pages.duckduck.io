@@ -123,7 +123,8 @@ tags: [tutorial, github pages]
       > * 示例中包含 generate 和 serve 两个脚本
       > * 可在 devbox 环境下使用 `devbox run <script-name>` 运行脚本
       > * generate 脚本用来安装 jekyll 并生成名为 myblog 的工程目录
-      > * serve 脚本用来启动 http，等效于 `jekyll serve` 命令
+      > * serve 脚本用来启动 http；
+          `bundler exec jekyll serve` 命令可以在启动 server 时自动加载未列出的依赖
 
    2. 使用 `devbox shell` 切换到开发环境，使用脚本或命令生成工程目录并启动 http
 
