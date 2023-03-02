@@ -159,11 +159,11 @@ jekyll 官网的 resources 链接：[Resources](https://jekyllrb.com/resources/)
 找到心仪的主题后进入主题的 github 页面，大多都会在 README 内有详细的说明。
 按着流程走就行。下面会讲一下多数主题的两种安装方式。
 
-1. 启用远程主题插件（推荐）
+### 远程主题插件（推荐）
 
    这种方式适用于多数主题。但除需改动 `_config.yml` 外也需要改动 `Gemfile` 来满足主题的依赖。
 
-   * 在 Gemfile 中添加依赖 `jekyll-remote-theme` 依赖
+   * 在 Gemfile 中添加 `jekyll-remote-theme` 插件依赖
 
      ```shell
      gem "jekyll-remote-theme"
@@ -198,9 +198,9 @@ jekyll 官网的 resources 链接：[Resources](https://jekyllrb.com/resources/)
    ```
    {: file="_config.yml"}
 
-2. 本地安装
+### 克隆
 
-   下载作者的 repo 或 release，并基于此修改自己的配置进行部署。这种方式通常 Gem 依赖等所需的
+   下载作者的 repo 或 release，或直接 fork，并基于此修改自己的配置进行部署。这种方式通常 Gem 依赖等所需的
    文件都是已经准备好的，只需要改动 `_config.yml`，如填写自己的 repo 和 host 即可。缺点是不方便拉取
    最新的主题变更，未来有可能需要使用 github 提供的 [compare 工具](https://docs.github.com/en/repositories/releasing-projects-on-github/comparing-releases) 比照改动。
 
