@@ -8,16 +8,15 @@ tags: [tutorial, github pages]
 
 ## Jekyll 是什么
 
-[Jekyll](https://jekyllrb.com/docs/) 是一个静态网站生成器，支持常用的标记语言，
-如 markdown。因此可以迅速建立网站并专注内容。本篇文章旨在介绍 jekyll 的安装，
-并将 jekyll 部署到 github pages。
+[Jekyll](https://jekyllrb.com/docs/) 是一个静态网站生成器，支持常用的标记语言，如
+markdown。因此可以迅速建立网站并专注内容。本篇文章旨在介绍 jekyll 的安装，并将 jekyll
+部署到 github pages。
 
 ## 安装环境
 
 ### 本地安装
 
-> 环境是可选项，旨在从本地预览，如果已有完整的 jekyll 文件结构，可以直接上传项目
-  并部署到 github pages。
+> 环境是可选项，旨在从本地预览，如果已有完整的 jekyll 文件结构，可以直接上传项目并部署到 github pages。
 {: .prompt-tip}
 
 根据不同操作系统跟随官网的 [Guide](https://jekyllrb.com/docs/) 进行操作。
@@ -56,7 +55,7 @@ tags: [tutorial, github pages]
    ```
 
    > 最新稳定版是 4，也可以使用 stable 或 latest 标签。
-   {: .prompt-tip}
+   >
    > 可以使用 `--volume="$PWD/vendor/bundle:/usr/local/bundle:Z" \` 开启构建缓存。
 
 3. 为项目的 Gemfile 添加 webrick
@@ -121,11 +120,11 @@ tags: [tutorial, github pages]
       ```
       {: file="devbox.json"}
 
-      > * 示例中包含 generate 和 serve 两个脚本
-      > * 可在 devbox 环境下使用 `devbox run <script-name>` 运行脚本
-      > * generate 脚本用来安装 jekyll 并生成名为 myblog 的工程目录
-      > * serve 脚本用来启动 http；
-          `bundler exec jekyll serve` 命令可以在启动 server 时自动加载未列出的依赖
+      > 示例中包含 generate 和 serve 两个脚本，devbox 环境下使用 `devbox run <script-name>` 运行脚本。
+      >
+      > generate 脚本用来安装 jekyll 并生成名为 myblog 的工程目录。
+      >
+      > serve 脚本用来启动 http；`bundler exec jekyll serve` 命令可以在启动 server 时自动加载未列出的依赖。
 
    2. 使用 `devbox shell` 切换到开发环境，使用脚本或命令生成工程目录并启动 http
 
@@ -147,75 +146,76 @@ end
 ```
 {: file="Gemfile"}
 
-> * [jekyll-remote-theme](https://github.com/benbalter/jekyll-remote-theme) 插件可
-    以让网站在部署时从远程 repo 中直接拉取主题
-> * [jekyll-compose](https://github.com/jekyll/jekyll-compose)
-    是一个用于快速生成 post 的工具，可以配置模板并使用命令简化操作
+> [jekyll-remote-theme](https://github.com/benbalter/jekyll-remote-theme)
+  插件可以让网站在部署时从远程 repo 中直接拉取主题。
+>
+> [jekyll-compose](https://github.com/jekyll/jekyll-compose)
+  是一个用于快速生成 post 的工具，可以配置模板并使用命令简化操作。
 
 ## 安装主题
 
-jekyll 官网的 resources 链接：[Resources](https://jekyllrb.com/resources/)，
-其中最后一个站点发布的是付费主题。
+jekyll 官网的 resources 链接：[Resources](https://jekyllrb.com/resources/)，其中最后一个站点发布的是付费主题。
 
-找到心仪的主题后进入主题的 github 页面，大多都会在 README 内有详细的说明。
-按着流程走就行。下面讲一下适用于大多数主题的两种安装方式。
+找到心仪的主题后进入主题的 github 页面，大多都会在 README 内有详细的说明。按着流程走就行。
+下面讲一下适用于大多数主题的两种安装方式。
 
 ### 远程主题插件（推荐）
 
-   适用于 repo 为公开的主题。只需配置 `Gemfile` 满足主题的依赖并在 `_config.yml` 中启用主题即可。
-   方便且易于升级。如需对原主题进行自定义，则在需要的自定义的路径创建同名文件，即可覆盖原主题文件。
+适用于 repo 为公开的主题。只需配置 `Gemfile` 满足主题的依赖并在 `_config.yml`
+中启用主题即可。方便且易于升级。如需对原主题进行自定义，则在需要的自定义的路径创建同名文件，即可覆盖原主题文件。
 
-   * 在 Gemfile 中添加主题和插件依赖
+* 在 Gemfile 中添加主题和插件依赖
 
-     ```shell
-     gem "<theme-repo-name>"
+  ```shell
+  gem "<theme-repo-name>"
+  gem "jekyll-remote-theme"
+  ```
+  {: file="Gemfile"}
 
-     gem "jekyll-remote-theme"
-     ```
-     {: file="Gemfile"}
+* 在 `_config.yml` 中的 `plugins` 中启用 `jekyll-remote-theme`，并加载主题的 repo
 
-   * 在 `_config.yml` 中的 `plugins` 中启用 `jekyll-remote-theme`，并加载主题的 repo
+  ```yaml
+  remote_theme: <github-user>/<theme-repo-name>
 
-     ```yaml
-     remote_theme: <github-user>/<theme-repo-name>
+  plugins:
+    - jekyll-remote-theme
+  ```
+  {: file="_config.yml"}
 
-     plugins:
-       - jekyll-remote-theme
-     ```
-     {: file="_config.yml"}
+以安装 [leaf](https://github.com/supun-io/jekyll-theme-leaf) 主题为例：
 
-   以安装 [leaf](https://github.com/supun-io/jekyll-theme-leaf) 主题为例：
+```shell
+group :jekyll_plugins do
+  gem "jekyll-remote-theme"
+  gem "kramdown-parser-gfm"
+end
+```
+{: file="Gemfile"}
 
-   ```shell
-   group :jekyll_plugins do
-     gem "jekyll-remote-theme"
-     gem "kramdown-parser-gfm"
-   end
-   ```
-   {: file="Gemfile"}
+```yaml
+remote_theme: supun-io/jekyll-theme-leaf
 
-   ```yaml
-   remote_theme: supun-io/jekyll-theme-leaf
-
-   plugins:
-     - jekyll-remote-theme
-   ```
-   {: file="_config.yml"}
+plugins:
+  - jekyll-remote-theme
+```
+{: file="_config.yml"}
 
 ### 克隆
 
-   下载作者的 repo 或 release，或直接 fork，好处是可以基于原主题进行订制。通常 Gem 依赖等所需的
-   文件都已经准备好了，只需要配置 `_config.yml`，如填写自己的 repo 和 host 即可。优点是所有文件
-   都从自己的 repo 读取，更稳定可控。缺点则是不方便拉取原主题的更新，未来有可能需要使用 github 提
-   供的 [compare 工具](https://docs.github.com/en/repositories/releasing-projects-on-github/comparing-releases)
-   比照改动来升级。
+下载作者的 repo 或 release，或直接 fork，好处是可以基于原主题进行订制。通常 Gem
+依赖等所需的文件都已经准备好了，只需要配置 `_config.yml`，如填写自己的 repo 和 host
+即可。优点是所有文件都从自己的 repo 读取，更稳定可控。缺点则是不方便拉取原主题的更新，未来可能需要用
+github 提供的
+[compare 工具](https://docs.github.com/en/repositories/releasing-projects-on-github/comparing-releases)
+对照改动来升级。
 
 ## 配置 github pages
 
 1. 在本地 jekyll 目录中初始化 git 并添加自己 repo 的 remote url，push
 
 2. 添加 github workflows，说明参见 [链接](https://docs.github.com/zh/actions/using-workflows)。
-   [这里是一个可以工作的示例配置](https://github.com/duckduckio/pages.duckduck.io/blob/main/.github/workflows/pages.yml)，将该 yaml 放在目录 `.github/workflows/` 下，push 后即可让配置内的分支发生改变时触发工作流
+   [这里是一个可以工作的示例配置](https://github.com/duckduckio/pages.duckduck.io/blob/main/.github/workflows/pages.yml)，
+   将该 yaml 放在目录 `.github/workflows/` 下，push 后即可让配置内的分支发生改变时触发工作流
 
 3. 在 repo 页面右上角的 `···` 中找到 `Settings`，点左侧的 `Pages`
 
@@ -223,19 +223,19 @@ jekyll 官网的 resources 链接：[Resources](https://jekyllrb.com/resources/)
    * 更改 Custom domain 为自己的自定义域名，不填则默认为 `<your_username>.github.io`，
      并启用 HTTPS
    * 如需自定义域名，需要点 github 账号头像找到 settings 中 page 选项，根据提示把验证用的 txt
-     记录及访问路径的 A 记录添加到域名托管方的 DNS 设置中。设置自定义域后需要等通过了 github 的
-     域验证后才能启用 HTTPS
+     记录及访问路径的 A 记录添加到域名托管方的 DNS 设置中。设置自定义域后需要等通过了 github
+     的域验证后才能启用 HTTPS
 
 在 Action 卡片中查看部署情况，没问题的话，访问自己的 github pages 地址，就能看到网站了
 
 ## 写文章
 
-Jekyll 文章构成包含文件名，元信息，正文三部分，且需要放在 _post 目录下。
-如果启用了 [jekyll-compose](https://www.markdownguide.org/basic-syntax/) 插件的话，
-可以使用命令快速生成。
+Jekyll 文章构成包含文件名，元信息，正文三部分，且需要放在 _post 目录下。如果启用了
+[jekyll-compose](https://www.markdownguide.org/basic-syntax/)
+插件的话，可以使用命令快速生成。
 
-* 文件名需要遵循 `yyyy-MM-dd-post-title-name.md` 规则，文件名后缀也可以是其他被支持的标记语言，
-  同时 _post-title-name_ 部分也是文章的访问路径
+* 文件名需要遵循 `yyyy-MM-dd-post-title-name.md` 规则，文件名后缀也可以是其他被支持的标记语言，同时
+  _post-title-name_ 部分也是文章的访问路径
 * 元信息要放在文章开头，其中包含了文章名，作者，日期，分类，标签等信息。示例如下：
 
   ```text
@@ -256,9 +256,9 @@ Jekyll 文章构成包含文件名，元信息，正文三部分，且需要放�
 二者都提供了 reactions 和 comments 功能，且使用都很方便。
 
 * giscus 是使用 github 的 discussions 功能，由 giscus bot 把评论发表在 repo 的 discussions 中
-* disqus 需要绑定自己 github pages 的地址到 disqus 账号内，并通过 disqus 提供的 shortname 来配置，
-  评论数据则保存在 disqus
+* disqus 需要绑定自己 github pages 的地址到 disqus 账号内，并通过 disqus 提供的 shortname
+  来配置，评论数据则保存在 disqus
 
-如果你使用的主题支持这二者之一，只需要按照官网的 guide 去获取需要的信息配置
-到 `_config.yml` 即可。如果不支持，二者也都提供现成的 js 代码，
-自己插入到 `_layouts/post.html` 需要的位置即可。
+如果你使用的主题支持这二者之一，只需要按照官网的 guide 去获取需要的信息配置到
+`_config.yml` 即可。如果不支持，二者也都提供现成的 js 代码，自己插入到
+`_layouts/post.html` 需要的位置即可。
