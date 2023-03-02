@@ -22,7 +22,7 @@ tags: [tutorial, github pages]
 
 根据不同操作系统跟随官网的 [Guide](https://jekyllrb.com/docs/) 进行操作。
 
-在这个过程中会安装 Ruby 语言环境, RubyGems, Bundler, Jekyll 几个软件。
+在这个过程中会安装 Ruby 语言环境，RubyGems，Bundler，Jekyll 几个软件。
 
 * RubyGems：Ruby 程序包管理器，类似于 Python 的 Pip
 * Bundler：负责包依赖解析
@@ -220,9 +220,9 @@ jekyll 官网的 resources 链接：[Resources](https://jekyllrb.com/resources/)
 3. 在 repo 页面右上角的 `···` 中找到 `Settings`，点左侧的 `Pages`
 
    * 更改 `Build and deployment` 为 Github Action
-   * 更改 Custom domain 为自己的自定义域名, 不填则默认为 `<your_username>.github.io`，
+   * 更改 Custom domain 为自己的自定义域名，不填则默认为 `<your_username>.github.io`，
      并启用 HTTPS
-   * 如需自定义域名, 需要点 github 账号头像找到 settings 中 page 选项, 根据提示把验证用的 txt
+   * 如需自定义域名，需要点 github 账号头像找到 settings 中 page 选项，根据提示把验证用的 txt
      记录及访问路径的 A 记录添加到域名托管方的 DNS 设置中。设置自定义域后需要等通过了 github 的
      域验证后才能启用 HTTPS
 
@@ -262,4 +262,3 @@ Jekyll 文章构成包含文件名，元信息，正文三部分，且需要放�
 如果你使用的主题支持这二者之一，只需要按照官网的 guide 去获取需要的信息配置
 到 `_config.yml` 即可。如果不支持，二者也都提供现成的 js 代码，
 自己插入到 `_layouts/post.html` 需要的位置即可。
-
