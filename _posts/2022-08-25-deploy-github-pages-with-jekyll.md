@@ -12,9 +12,9 @@ tags: [tutorial, github pages]
 如 markdown。因此可以迅速建立网站并专注内容。本篇文章旨在介绍 jekyll 的安装，
 并将 jekyll 部署到 github pages。
 
-## 1. 安装环境
+## 安装环境
 
-### 1.1 本地安装
+### 本地安装
 
 > 环境是可选项，旨在从本地预览，如果已有完整的 jekyll 文件结构，可以直接上传项目
 并部署到 github pages。
@@ -27,7 +27,7 @@ tags: [tutorial, github pages]
 * RubyGems: Ruby 程序包管理器，类似于 Python 的 Pip；
 * Bundler: 负责包依赖解析；
 
-### 1.2 使用 Docker
+### 使用 Docker
 
 [官方 docker 镜像](https://hub.docker.com/r/jekyll/jekyll) 和
 [使用文档](https://github.com/envygeeks/jekyll-docker/blob/master/README.md) 。
@@ -83,7 +83,7 @@ tags: [tutorial, github pages]
 
 5. 访问 <http://localhost:4000> 查看页面
 
-### 1.3 使用 [Devbox](https://www.jetpack.io/devbox/docs/devbox_examples/stacks/jekyll/)
+### 使用 [Devbox](https://www.jetpack.io/devbox/docs/devbox_examples/stacks/jekyll/)
 
    1. 新建一个目录并使用 `devbox init` 初始化配置文件 `devbox.json`，
       使用 `devbox add <package_name>`
@@ -131,7 +131,7 @@ tags: [tutorial, github pages]
 
    3. 访问 <http://localhost:4000> 查看页面。
 
-## 2. 安装插件
+## 安装插件
 
 通常 `Gemfile` 中添加依赖只需要添加包名和版本号即可，没有指定版本号时默认安装最新版。
 插件依赖则需要放在 plugins 分组内。之后使用 `bundle` 命令进行安装即可。示例：
@@ -151,7 +151,7 @@ end
 > * [jekyll-compose](https://github.com/jekyll/jekyll-compose)
   是一个用于快速生成 post 的工具，可以配置模板并使用命令简化操作
 
-## 3. 安装主题
+## 安装主题
 
 jekyll 官网的 resources 链接：[Resources](https://jekyllrb.com/resources/)，
 其中最后一个站点发布的是付费主题。
@@ -204,7 +204,7 @@ jekyll 官网的 resources 链接：[Resources](https://jekyllrb.com/resources/)
    文件都是已经准备好的，只需要改动 `_config.yml`，如填写自己的 repo 和 host 即可。缺点是不方便拉取
    最新的主题变更，未来有可能需要使用 github 提供的 [compare 工具](https://docs.github.com/en/repositories/releasing-projects-on-github/comparing-releases) 比照改动。
 
-## 4. 配置 github pages
+## 配置 github pages
 
 1. 在本地 jekyll 目录中初始化 git 并添加自己 repo 的 remote url，push
 
@@ -222,7 +222,7 @@ jekyll 官网的 resources 链接：[Resources](https://jekyllrb.com/resources/)
 
 在 Action 卡片中查看部署情况，没问题的话，访问自己的 github pages 地址，就能看到网站了
 
-## 5. 写文章
+## 写文章
 
 Jekyll 文章构成包含文件名，元信息，正文三部分，且需要放在 _post 目录下。
 如果启用了 [jekyll-compose](https://www.markdownguide.org/basic-syntax/) 插件的话，
@@ -230,7 +230,6 @@ Jekyll 文章构成包含文件名，元信息，正文三部分，且需要放�
 
 * 文件名需要遵循 `yyyy-MM-dd-post-title-name.md` 规则，文件名后缀也可以是其他被支持的标记语言，
   同时 _post-title-name_ 部分也是文章的访问路径
-
 * 元信息要放在文章开头，其中包含了文章名，作者，日期，分类，标签等信息。示例如下：
 
   ```text
@@ -244,3 +243,16 @@ Jekyll 文章构成包含文件名，元信息，正文三部分，且需要放�
   ```
 
 * 正文默认使用 Markdown 标记语言。语法可参见 [链接](https://www.markdownguide.org/basic-syntax/)
+
+## 评论系统
+
+常用的评论系统有 [giscus](https://giscus.app/) 和 [disqus](https://disqus.com/)。
+二者都提供了 reactions 和 comments 功能，且使用都很方便。
+
+* giscus 是使用 github 的 discussions 功能，由 giscus bot 把评论发表在 repo 的 discussions 中
+* disqus 需要绑定自己 github pages 的地址到 disqus 账号内，并通过 disqus 提供的 shortname 来配置，
+  评论数据则保存在 disqus
+
+如果你使用的主题支持这二者之一，只需要按照官网的 guide 去获取需要的信息配置
+到 `_config.yml` 即可。如果不支持，二者也都提供现成的 js 代码，
+自己插入到 `_layouts/post.html` 需要的位置即可。
