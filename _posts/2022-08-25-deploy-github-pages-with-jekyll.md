@@ -36,7 +36,7 @@ tags: [tutorial, github pages]
 
 1. 初始化一个网站目录
 
-   ```bash
+   ```shell
    export site_name="my-blog" && export MSYS_NO_PATHCONV=1
    docker run --rm \
      --volume="$PWD:/srv/jekyll" \
@@ -47,7 +47,7 @@ tags: [tutorial, github pages]
 
 2. 构建
 
-   ```bash
+   ```shell
    export JEKYLL_VERSION=3.8
    docker run --rm \
      --volume="$PWD:/srv/jekyll:Z" \
@@ -64,7 +64,7 @@ tags: [tutorial, github pages]
    > [Ruby 3.0 后需要添加 webrick](https://jekyllrb.com/docs/)
    {: .prompt-tip}
 
-   ```bash
+   ```shell
    docker run --rm \
      --volume="$PWD:/srv/jekyll:Z" \
      -it jekyll/builder:$JEKYLL_VERSION \
@@ -73,7 +73,7 @@ tags: [tutorial, github pages]
 
 4. 开启服务
 
-   ```bash
+   ```shell
    docker run --rm \
      --volume="$PWD:/srv/jekyll:Z" \
      --publish [::1]:4000:4000 \
@@ -119,6 +119,7 @@ tags: [tutorial, github pages]
         }
       }
       ```
+      {: file="devbox.json"}
 
       > * 示例中包含 generate 和 serve 两个脚本
       > * 可在 devbox 环境下使用 `devbox run <script-name>` 运行脚本
@@ -144,6 +145,7 @@ group :jekyll_plugins do
   gem "jekyll-compose"
 end
 ```
+{: file="Gemfile"}
 
 > * jekyll-remote-theme 插件可以让网站从 repo 中直接拉取主题而不需要下载到本地
 > * [jekyll-compose](https://github.com/jekyll/jekyll-compose)
@@ -163,9 +165,10 @@ jekyll 官网的 resources 链接：[Resources](https://jekyllrb.com/resources/)
 
    * 在 Gemfile 中添加依赖 `jekyll-remote-theme` 依赖
 
-     ```bash
+     ```shell
      gem "jekyll-remote-theme"
      ```
+     {: file="Gemfile"}
 
    * 在 `_config.yml` 中的 `plugins` 中启用 `jekyll-remote-theme`，并加载主题的 repo
 
@@ -175,6 +178,7 @@ jekyll 官网的 resources 链接：[Resources](https://jekyllrb.com/resources/)
      plugins:
        - jekyll-remote-theme
      ```
+     {: file="_config.yml"}
 
    以安装 [leaf](https://github.com/supun-io/jekyll-theme-leaf) 主题为例：
 
