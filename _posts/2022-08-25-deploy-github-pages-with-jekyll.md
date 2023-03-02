@@ -203,12 +203,17 @@ jekyll 官网的 resources 链接：[Resources](https://jekyllrb.com/resources/)
 
 1. 在本地 jekyll 目录中初始化 git 并添加自己 repo 的 remote url，push
 
-2. 在 github 的 repo 的页面中找到 `Settings`，点左侧的 `Pages`
+2. 添加 github workflows，说明参见 [链接](https://docs.github.com/zh/actions/using-workflows)。
+   [这里是一个可以工作的示例配置](https://github.com/duckduckio/pages.duckduck.io/blob/main/.github/workflows/pages.yml)，将该 yaml 放在目录 `.github/workflows/` 下，push 后即可让配置内的分支发生改变时触发工作流
+
+3. 在 repo 页面右上角的 `···` 中找到 `Settings`，点左侧的 `Pages`
 
    * 更改 `Build and deployment` 为 Github Action
-   * 更改 Custom domain 为自己的自定义域名, 不填则默认为 `<your_username>.github.io`
+   * 更改 Custom domain 为自己的自定义域名, 不填则默认为 `<your_username>.github.io`，
+     并启用 HTTPS
    * 如需自定义域名, 需要点 github 账号头像找到 settings 中 page 选项, 根据提示把验证用的 txt
-     记录及访问路径的 A 记录添加到域名托管方的 DNS 设置中
+     记录及访问路径的 A 记录添加到域名托管方的 DNS 设置中。设置自定义域后需要等通过了 github 的
+     域验证后才能启用 HTTPS
 
 在 Action 卡片中查看部署情况，没问题的话，访问自己的 github pages 地址，就能看到网站了
 
