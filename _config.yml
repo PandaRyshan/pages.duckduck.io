@@ -32,7 +32,7 @@ description: >-                        # used by seo meta and the atom feed
 url: 'https://pages.duckduck.io'
 
 github:
-  username: aold619             # change to your github username
+  username: duckduckio             # change to your github username
 
 twitter:
   username: aold619            # change to your twitter username
@@ -45,7 +45,7 @@ social:
   links:
     # The first element serves as the copyright owner's link
     - https://twitter.com/aold619      # change to your twitter homepage
-    - https://github.com/aold619       # change to your github homepage
+    - https://github.com/duckduckio       # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
@@ -99,7 +99,7 @@ comments:
     issue_term:   # < url | pathname | title | ...>
   # Giscus options › https://giscus.app
   giscus:
-    repo: aold619/pages.duckduck.io            # <gh-username>/<repo>
+    repo: duckduckio/pages.duckduck.io            # <gh-username>/<repo>
     repo_id: 529158694
     category: General
     category_id: 38026487

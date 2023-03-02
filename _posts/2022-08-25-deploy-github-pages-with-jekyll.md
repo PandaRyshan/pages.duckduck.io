@@ -20,114 +20,135 @@ tags: [tutorial, github pages]
 并部署到 github pages。
 {: .prompt-tip}
 
-根据不同操作系统跟随官网的 [Guide](https://jekyllrb.com/docs/)进行操作。
+根据不同操作系统跟随官网的 [Guide](https://jekyllrb.com/docs/) 进行操作。
 
 在这个过程中会安装 Ruby 语言环境, RubyGems, Bundler, Jekyll 几个软件。
 
-   * RubyGems: Ruby 程序包管理器，类似于 Python 的 Pip；
-   * Bundler: 负责包依赖解析；
+* RubyGems: Ruby 程序包管理器，类似于 Python 的 Pip；
+* Bundler: 负责包依赖解析；
 
 ### 1.2 使用 Docker
 
-[官方 docker 镜像](https://hub.docker.com/r/jekyll/jekyll) 和[使用文档](https://
-github.com/envygeeks/jekyll-docker/blob/master/README.md)。
+[官方 docker 镜像](https://hub.docker.com/r/jekyll/jekyll) 和
+[使用文档](https://github.com/envygeeks/jekyll-docker/blob/master/README.md) 。
 
 主要使用方法:
 
-   1. 初始化一个网站目录
+1. 初始化一个网站目录
 
-   ```shell
-export site_name="my-blog" && export MSYS_NO_PATHCONV=1
-docker run --rm \
-  --volume="$PWD:/srv/jekyll" \
-  -it jekyll/jekyll \
-  sh -c "chown -R jekyll /usr/gem/ && jekyll new $site_name" \
-  && cd $site_name
+   ```bash
+   export site_name="my-blog" && export MSYS_NO_PATHCONV=1
+   docker run --rm \
+     --volume="$PWD:/srv/jekyll" \
+     -it jekyll/jekyll \
+     sh -c "chown -R jekyll /usr/gem/ && jekyll new $site_name" \
+     && cd $site_name
    ```
 
-   2. 构建
+2. 构建
 
-   > 最新稳定版是 4, 也可以使用 stable 或 latest 标签
+   ```bash
+   export JEKYLL_VERSION=3.8
+   docker run --rm \
+     --volume="$PWD:/srv/jekyll:Z" \
+     -it jekyll/jekyll:$JEKYLL_VERSION \
+     jekyll build
+   ```
+
+   > 最新稳定版是 4，也可以使用 stable 或 latest 标签。
    {: .prompt-tip}
+   > 可以使用 `--volume="$PWD/vendor/bundle:/usr/local/bundle:Z" \` 开启构建缓存。
 
-   ```shell
-export JEKYLL_VERSION=3.8
-docker run --rm \
-  --volume="$PWD:/srv/jekyll:Z" \
-  -it jekyll/jekyll:$JEKYLL_VERSION \
-  jekyll build
-   ```
-
-   > 可以使用 `--volume="$PWD/vendor/bundle:/usr/local/bundle:Z" \` 开启构建缓存
-
-   3. 为项目的 Gemfile 添加 webrick
+3. 为项目的 Gemfile 添加 webrick
 
    > [Ruby 3.0 后需要添加 webrick](https://jekyllrb.com/docs/)
    {: .prompt-tip}
 
-   ```shell
-docker run --rm \
-  --volume="$PWD:/srv/jekyll:Z" \
-  -it jekyll/builder:$JEKYLL_VERSION \
-  bundle add webrick
+   ```bash
+   docker run --rm \
+     --volume="$PWD:/srv/jekyll:Z" \
+     -it jekyll/builder:$JEKYLL_VERSION \
+     bundle add webrick
    ```
 
-   4. 开启服务
+4. 开启服务
 
-   ```shell
-docker run --rm \
-  --volume="$PWD:/srv/jekyll:Z" \
-  --publish [::1]:4000:4000 \
-  jekyll/jekyll \
-  jekyll serve
+   ```bash
+   docker run --rm \
+     --volume="$PWD:/srv/jekyll:Z" \
+     --publish [::1]:4000:4000 \
+     jekyll/jekyll \
+     jekyll serve
    ```
 
-   5. 访问 [http://localhost:4000](http://localhost:4000) 查看页面
+5. 访问 <http://localhost:4000> 查看页面
 
 ### 1.3 使用 [Devbox](https://www.jetpack.io/devbox/docs/devbox_examples/stacks/jekyll/)
 
-示例 devbox.json：
+   1. 新建一个目录并使用 `devbox init` 初始化配置文件 `devbox.json`，
+      使用 `devbox add <package_name>`
+      添加 `ruby_3_1`，`bundler`，`libffi`。或使用示例配置：
 
-```json
-{
-  "packages": [
-    "ruby_3_1",
-    "bundler",
-    "libffi"
-  ],
-  "shell": {
-    "init_hook": [],
-    "scripts": {
-      "generate": [
-        "gem install jekyll --no-document",
-        "jekyll new myblog && cd myblog",
-        "bundle add webrick",
-        "bundle update",
-        "bundle lock",
-        "bundle package",
-        "rm -rf vendor"
-      ],
-      "serve": [
-        "cd myblog",
-        "bundler exec $GEM_HOME/bin/jekyll serve --trace"
-      ]
-    }
-  },
-  "nixpkgs": {
-    "commit": "f80ac848e3d6f0c12c52758c0f25c10c97ca3b62"
-  }
-}
+      ```json
+      {
+        "packages": [
+          "ruby_3_1",
+          "bundler",
+          "libffi"
+        ],
+        "shell": {
+          "init_hook": [],
+          "scripts": {
+            "generate": [
+              "gem install jekyll --no-document",
+              "jekyll new myblog && cd myblog",
+              "bundle add webrick",
+              "bundle update",
+              "bundle lock",
+              "bundle package",
+              "rm -rf vendor"
+            ],
+            "serve": [
+              "cd myblog",
+              "bundler exec $GEM_HOME/bin/jekyll serve --trace"
+            ]
+          }
+        },
+        "nixpkgs": {
+          "commit": "f80ac848e3d6f0c12c52758c0f25c10c97ca3b62"
+        }
+      }
+      ```
+
+      > * 示例中包含 generate 和 serve 两个脚本
+      > * 可在 devbox 环境下使用 `devbox run <script-name>` 运行脚本
+      > * generate 脚本用来安装 jekyll 并生成名为 myblog 的工程目录
+      > * serve 脚本用来启动 http，等效于 `jekyll serve` 命令
+
+   2. 使用 `devbox shell` 切换到开发环境，使用脚本或命令生成工程目录并启动 http
+
+   3. 访问 <http://localhost:4000> 查看页面。
+
+## 2. 安装插件
+
+通常 `Gemfile` 中添加依赖只需要添加包名和版本号即可，没有指定版本号时默认安装最新版。
+插件依赖则需要放在 plugins 分组内。之后使用 `bundle` 命令进行安装即可。示例：
+
+```shell
+gem "jekyll", "~> 4.3.2"
+gem "minima", "~> 2.5"
+
+group :jekyll_plugins do
+  gem "jekyll-remote-theme"
+  gem "jekyll-compose"
+end
 ```
 
-   1. 新建一个目录并使用 `devbox init` 初始化一个配置文件，使用 `devbox add <package_name>` 
-   添加 `ruby_3_1`，`bundler`，`libffi`。或使用示例 devbox.json 配置：
+> * jekyll-remote-theme 插件可以让网站从 repo 中直接拉取主题而不需要下载到本地
+> * [jekyll-compose](https://github.com/jekyll/jekyll-compose)
+  是一个用于快速生成 post 的工具，可以配置模板并使用命令简化操作
 
-   2. 使用 `devbox shell` 切换到新环境. 如使用示例配置, 可使用 `devbox run generate` 
-   通过脚本生成名为 myblog 的网站, 并使用 `devbox run serve` 来开启本地 http 服务。
-
-   3. 访问 [http://localhost:4000](http://localhost:4000) 查看页面。
-
-## 2. 安装主题
+## 3. 安装主题
 
 jekyll 官网的 resources 链接：[Resources](https://jekyllrb.com/resources/)，
 其中最后一个站点发布的是付费主题。
@@ -135,30 +156,48 @@ jekyll 官网的 resources 链接：[Resources](https://jekyllrb.com/resources/)
 找到心仪的主题后进入主题的 github 页面，大多都会在 README 内有详细的说明。
 按着流程走就行。下面会讲一下多数主题的两种安装方式。
 
-1. 本地安装
+1. 启用远程主题插件（推荐）
 
-* 下载作者的 repo 或 release，并基于此修改自己的配置进行部署。这种方式通常 Gem 依赖等所需的
-  文件都是已经准备好的，只需要少数配置改动，如填写自己的 pages 地址即可。缺点是不方便拉取最新
-  的主题变更，未来有可能需要使用 github 提供的 compare 工具比照改动。
+   这种方式适用于多数主题。但除需改动 `_config.yml` 外也需要改动 `Gemfile` 来满足主题的依赖。
 
-2. 启用远程主题插件
+   * 在 Gemfile 中添加依赖 `jekyll-remote-theme` 依赖
 
-这种方式适用于多数主题。只需要修改 jekyll 的 `Gemfile` 和 `_config.yml` 即可。
+     ```bash
+     gem "jekyll-remote-theme"
+     ```
 
-  * 在 Gemfile 中增加 `gem "jekyll-remote-theme"`
-  * 在 `_config.yml` 中的 `plugins` 中启用 `jekyll-remote-theme`
-  ```yaml
-plugins:
-  - jekyll-remote-theme
-  ```
-  * 在 `_config.yml` 中加载远程主题
-  ```yaml
-remote_theme: <user>/<theme-repo-name>
-  ```
+   * 在 `_config.yml` 中的 `plugins` 中启用 `jekyll-remote-theme`，并加载主题的 repo
 
-## 3. 安装插件
+     ```yaml
+     remote_theme: <user>/<theme-repo-name>
 
-TODO
+     plugins:
+       - jekyll-remote-theme
+     ```
+
+   以安装 [leaf](https://github.com/supun-io/jekyll-theme-leaf) 主题为例：
+
+   ```shell
+   group :jekyll_plugins do
+     gem "jekyll-remote-theme"
+     gem "kramdown-parser-gfm"
+   end
+   ```
+   {: file="Gemfile"}
+
+   ```yaml
+   remote_theme: supun-io/jekyll-theme-leaf
+
+   plugins:
+     - jekyll-remote-theme
+   ```
+   {: file="_config.yml"}
+
+2. 本地安装
+
+   下载作者的 repo 或 release，并基于此修改自己的配置进行部署。这种方式通常 Gem 依赖等所需的
+   文件都是已经准备好的，只需要改动 `_config.yml`，如填写自己的 repo 和 host 即可。缺点是不方便拉取
+   最新的主题变更，未来有可能需要使用 github 提供的 [compare 工具](https://docs.github.com/en/repositories/releasing-projects-on-github/comparing-releases) 比照改动。
 
 ## 4. 配置 github pages
 
@@ -166,25 +205,32 @@ TODO
 
 2. 在 github 的 repo 的页面中找到 `Settings`，点左侧的 `Pages`
 
-  * 更改 `Build and deployment` 为 Github Actions.
-  * 更改 Custom domain 为自己的自定义域名, 不填则默认为 `<your_username>.github.io`.
-  * 如需自定义域名, 需要点 github 账号头像找到 settings 中 page 选项, 根据提示把验证用的 txt 
-  记录及访问路径的 A 记录添加到域名托管方的 DNS 设置中
+   * 更改 `Build and deployment` 为 Github Action
+   * 更改 Custom domain 为自己的自定义域名, 不填则默认为 `<your_username>.github.io`
+   * 如需自定义域名, 需要点 github 账号头像找到 settings 中 page 选项, 根据提示把验证用的 txt
+     记录及访问路径的 A 记录添加到域名托管方的 DNS 设置中
 
-在 Action 卡片中查看部署情况，没问题的话，访问自己的 github pages 地址，就能看到 blog 了
+在 Action 卡片中查看部署情况，没问题的话，访问自己的 github pages 地址，就能看到网站了
 
 ## 5. 写文章
 
-创建 markdown 文本在 jekyll 下的 _posts 目录下，文件名需要遵循 `yyyy-MM-dd-post-title-name.md`。
+Jekyll 文章构成包含文件名，元信息，正文三部分，且需要放在 _post 目录下。
+如果启用了 [jekyll-compose](https://www.markdownguide.org/basic-syntax/) 插件的话，
+可以使用命令快速生成。
 
-md 文件中的 meta 信息示例：
+* 文件名需要遵循 `yyyy-MM-dd-post-title-name.md` 规则，文件名后缀也可以是其他被支持的标记语言，
+  同时 _post-title-name_ 部分也是文章的访问路径
 
-```
----
-title: Post Title Name
-author: xxx
-date: yyyy-MM-dd HH:mm:ss
-categories: [c1, c2]
-tags: [t1, t2, t3]
----
-```
+* 元信息要放在文章开头，其中包含了文章名，作者，日期，分类，标签等信息。示例如下：
+
+  ```text
+  ---
+  title: Post Title Name
+  author: xxx
+  date: yyyy-MM-dd HH:mm:ss
+  categories: [c1, c2]
+  tags: [t1, t2, t3]
+  ---
+  ```
+
+* 正文默认使用 Markdown 标记语言。语法可参见 [链接](https://www.markdownguide.org/basic-syntax/)
