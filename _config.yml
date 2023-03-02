@@ -100,13 +100,15 @@ comments:
   # Giscus options › https://giscus.app
   giscus:
     repo: duckduckio/pages.duckduck.io            # <gh-username>/<repo>
-    repo_id: 529158694
+    #repo_id: 529158694
+    repo_id: R_kgDOH4pSJg
     category: General
-    category_id: 38026487
-    mapping:          # optional, default to 'pathname'
-    input_position:   # optional, default to 'bottom'
-    lang:             # optional, default to the value of `site.lang`
-    reactions_enabled:   # optional, default to the value of `1`
+    category_id: DIC_kwDOH4pSJs4CRDz3
+    mapping: pathname         # optional, default to 'pathname'
+    input_position: bottom   # optional, default to 'bottom'
+    lang: site.lang            # optional, default to the value of `site.lang`
+    reactions_enabled: 1  # optional, default to the value of `1`
+    #theme: preferred_color_scheme
 
 # Self-hosted static assets, optional › https://github.com/cotes2020/chirpy-static-assets
 assets:
