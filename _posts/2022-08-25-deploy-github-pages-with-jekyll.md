@@ -17,7 +17,7 @@ tags: [tutorial, github pages]
 ### 本地安装
 
 > 环境是可选项，旨在从本地预览，如果已有完整的 jekyll 文件结构，可以直接上传项目
-并部署到 github pages。
+  并部署到 github pages。
 {: .prompt-tip}
 
 根据不同操作系统跟随官网的 [Guide](https://jekyllrb.com/docs/) 进行操作。
@@ -262,3 +262,4 @@ Jekyll 文章构成包含文件名，元信息，正文三部分，且需要放�
 如果你使用的主题支持这二者之一，只需要按照官网的 guide 去获取需要的信息配置
 到 `_config.yml` 即可。如果不支持，二者也都提供现成的 js 代码，
 自己插入到 `_layouts/post.html` 需要的位置即可。
+
