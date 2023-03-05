@@ -43,6 +43,8 @@ markdown。因此可以迅速建立网站并专注内容。本篇文章旨在介
      sh -c "chown -R jekyll /usr/gem/ && jekyll new $site_name" \
      && cd $site_name
    ```
+   > root 用户需要加上 `-e JEKYLL_UID=1001 -e JEKYLL_GID=1001`
+   {: .prompt-tip}
 
 2. 构建
 
@@ -185,6 +187,8 @@ jekyll 官网的 resources 链接：[Resources](https://jekyllrb.com/resources/)
 以安装 [leaf](https://github.com/supun-io/jekyll-theme-leaf) 主题为例：
 
 ```shell
+gem jekyll-theme-leaf
+
 group :jekyll_plugins do
   gem "jekyll-remote-theme"
   gem "kramdown-parser-gfm"
