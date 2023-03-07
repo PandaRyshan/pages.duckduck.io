@@ -104,7 +104,7 @@ comments:
     issue_term:   # < url | pathname | title | ...>
   # Giscus options › https://giscus.app
   giscus:
-    repo: duckduckio/pages.duckduck.io            # <gh-username>/<repo>
+    repo: PandaRyshan/pages.duckduck.io            # <gh-username>/<repo>
     repo_id: R_kgDOH4pSJg
     category: General
     category_id: DIC_kwDOH4pSJs4CRDz3
