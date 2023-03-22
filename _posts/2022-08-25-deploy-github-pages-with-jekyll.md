@@ -46,21 +46,7 @@ markdown。因此可以迅速建立网站并专注内容。本篇文章旨在介
    > root 用户需要加上 `-e JEKYLL_UID=1001 -e JEKYLL_GID=1001`
    {: .prompt-tip}
 
-2. 构建
-
-   ```shell
-   export JEKYLL_VERSION=3.8
-   docker run --rm \
-     --volume="$PWD:/srv/jekyll:Z" \
-     -it jekyll/jekyll:$JEKYLL_VERSION \
-     jekyll build
-   ```
-
-   > 最新稳定版是 4，也可以使用 stable 或 latest 标签。
-   >
-   > 可以使用 `--volume="$PWD/vendor/bundle:/usr/local/bundle:Z" \` 开启构建缓存。
-
-3. 为项目的 Gemfile 添加 webrick
+2. 为项目的 Gemfile 添加 webrick
 
    > [Ruby 3.0 后需要添加 webrick](https://jekyllrb.com/docs/)
    {: .prompt-tip}
@@ -68,16 +54,30 @@ markdown。因此可以迅速建立网站并专注内容。本篇文章旨在介
    ```shell
    docker run --rm \
      --volume="$PWD:/srv/jekyll:Z" \
-     -it jekyll/builder:$JEKYLL_VERSION \
+     --volume="$PWD/vendor/bundle:/usr/local/bundle:Z" \
+     -it jekyll/jekyll \
      bundle add webrick
+   ```
+
+   > 使用 `--volume="$PWD/vendor/bundle:/usr/local/bundle:Z" \` 挂载一个本地目录保留构建缓存。
+
+3. 安装依赖
+
+   ```shell
+   docker run --name bundle \ 
+     --volume="$PWD:/srv/jekyll:Z" \
+     --volume="$PWD/vendor/bundle:/usr/local/bundle:Z" \
+     -it jekyll/jekyll \
+     bundle install
    ```
 
 4. 开启服务
 
    ```shell
-   docker run --rm \
+   docker run -d --name jekyll \
      --volume="$PWD:/srv/jekyll:Z" \
-     --publish [::1]:4000:4000 \
+     --volume="$PWD/vendor/bundle:/usr/local/bundle:Z" \
+     --publish 4000:4000 \
      jekyll/jekyll \
      jekyll serve
    ```
