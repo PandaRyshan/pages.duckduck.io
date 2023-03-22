@@ -48,9 +48,6 @@ markdown。因此可以迅速建立网站并专注内容。本篇文章旨在介
 
 2. 为项目的 Gemfile 添加 webrick
 
-   > [Ruby 3.0 后需要添加 webrick](https://jekyllrb.com/docs/)
-   {: .prompt-tip}
-
    ```shell
    docker run --rm \
      --volume="$PWD:/srv/jekyll:Z" \
@@ -58,8 +55,10 @@ markdown。因此可以迅速建立网站并专注内容。本篇文章旨在介
      -it jekyll/jekyll \
      bundle add webrick
    ```
-
-   > 使用 `--volume="$PWD/vendor/bundle:/usr/local/bundle:Z" \` 挂载一个本地目录保留构建缓存。
+   > [Ruby 3.0 后依赖 webrick](https://jekyllrb.com/docs/)。
+   >
+   > 挂载一个本地目录保留构建缓存可以加速镜像启动。
+   {: .prompt-tip}
 
 3. 安装依赖
 
