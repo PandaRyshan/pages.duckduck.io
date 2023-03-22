@@ -43,6 +43,7 @@ markdown。因此可以迅速建立网站并专注内容。本篇文章旨在介
      sh -c "chown -R jekyll /usr/gem/ && jekyll new $site_name" \
      && cd $site_name
    ```
+
    > root 用户需要加上 `-e JEKYLL_UID=1001 -e JEKYLL_GID=1001`
    {: .prompt-tip}
 
@@ -55,6 +56,7 @@ markdown。因此可以迅速建立网站并专注内容。本篇文章旨在介
      -it jekyll/jekyll \
      bundle add webrick
    ```
+
    > [Ruby 3.0 后依赖 webrick](https://jekyllrb.com/docs/)。
    >
    > 挂载一个本地目录保留构建缓存可以加速镜像启动。
@@ -69,6 +71,11 @@ markdown。因此可以迅速建立网站并专注内容。本篇文章旨在介
      -it jekyll/jekyll \
      bundle install
    ```
+
+   > 如要更新依赖的新版本请使用 `bundle update`
+   >
+   > 可以保留安装和服务两个容器循环使用。也可以把挂载路径改为绝对路径。
+   {: .prompt-tip}
 
 4. 开启服务
 
