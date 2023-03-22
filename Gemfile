@@ -3,7 +3,6 @@
 source "https://rubygems.org"
 
 # Themes
-# gem "jekyll-theme-chirpy", "~> 5.5", ">= 5.5.2"
 # gem "jekyll-theme-leaf"
 gem "jekyll-theme-chirpy", "~> 5.5", ">= 5.5.2"
 
