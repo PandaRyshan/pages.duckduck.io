@@ -14,9 +14,9 @@ end
 
 # Put plugins here
 group :jekyll_plugins do
+  gem "jekyll-feed"
   gem "jekyll-compose"
   gem "kramdown-parser-gfm"
-  gem "jekyll-remote-theme"
 end
 
 # Windows and JRuby does not include zoneinfo files, so bundle the tzinfo-data gem

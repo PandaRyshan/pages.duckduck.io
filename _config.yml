@@ -91,7 +91,7 @@ avatar: assets/img/avatars/surfing_parrot.jpg
 toc: true
 
 plugins:
-  - jekyll-remote-theme
+  - jekyll-feed
 
 comments:
   #active: "disqus"        # The global switch for posts comments, e.g., 'disqus'.  Keep it empty means disable
@@ -225,4 +225,3 @@ jekyll_compose:
       tags:
       published: false
       sitemap: false
-
