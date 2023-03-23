@@ -7,6 +7,13 @@
   "shell": {
     "init_hook": [],
     "scripts": {
+      "install": [
+        "gem install jekyll --no-document",
+        "bundle update",
+        "bundle lock",
+        "bundle package",
+        "rm -rf vendor"
+      ],
       "serve": [
         "bundler exec $GEM_HOME/bin/jekyll serve --trace"
       ]

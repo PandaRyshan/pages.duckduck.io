@@ -4,10 +4,10 @@ source "https://rubygems.org"
 
 # Themes
 # gem "jekyll-theme-leaf"
-gem "jekyll-theme-chirpy", "~> 5.5", ">= 5.5.2"
+gem "jekyll-theme-chirpy"
 
 group :test do
-  gem "html-proofer", "~> 3.18"
+  gem "html-proofer" 
 end
 
 # Put plugins here
@@ -25,7 +25,7 @@ platforms :mingw, :x64_mingw, :mswin, :jruby do
 end
 
 # Performance-booster for watching directories on Windows
-gem "wdm", "~> 0.1.1", :install_if => Gem.win_platform?
+gem "wdm", "~> 0.1.1", :install_if => [:mingw, :x64_mingw, :mswin]
 
 # Lock `http_parser.rb` gem to `v0.6.x` on JRuby builds since newer versions of the gem
 # do not have a Java counterpart.
