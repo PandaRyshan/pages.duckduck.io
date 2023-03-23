@@ -104,7 +104,7 @@ gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
      --volume="$PWD:/srv/jekyll:Z" \
      --volume="$PWD/vendor/bundle:/usr/local/bundle:Z" \
      -it jekyll/jekyll \
-     bundle install
+     bundle update
    ```
 
    > 如要更新依赖的新版本请使用 `bundle update`
