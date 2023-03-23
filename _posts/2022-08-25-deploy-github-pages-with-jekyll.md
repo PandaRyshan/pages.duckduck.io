@@ -176,7 +176,7 @@ gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
 
 ## 安装插件（可选）
 
-插件和主题也都是 gem 包，通常在 `Gemfile` 中只需要添加包名和版本号即可，没有指定版本号时默认安装最新版。通常我们会把插件放进一个 group 内，group 是一个更灵活的用法。便于定位，同时可以防止和其他 gem 产生冲突，因为 group 可以针对不同的环境来定制不同版本的依赖，而写在外层的包只能出现一次。示例：
+插件和主题也都是 gem 包，通常在 Gemfile 中只需要添加包名和版本号即可，没有指定版本号时默认安装最新版。通常我们会把插件放进一个 group 内，group 是一个更灵活的用法。便于定位，同时可以防止和其他 gem 产生冲突，因为 group 可以针对不同的环境来定制不同版本的依赖，而写在外层的包只能出现一次。示例：
 
 ```shell
 ... other requirements ...
@@ -358,4 +358,4 @@ a1:
 `_config.yml` 即可。如果不支持，二者也都提供现成的 js 代码，可以自己插入到
 `_layouts/post.html` 需要的位置即可。
 
-关于 layouts 可以查看 [这里](https://jekyllrb.com/docs/step-by-step/04-layouts/)。
+> 关于 layouts 可以查看 [这里](https://jekyllrb.com/docs/step-by-step/04-layouts/)。
