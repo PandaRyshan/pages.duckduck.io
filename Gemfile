@@ -2,12 +2,14 @@
 
 source "https://rubygems.org"
 
+gem "jekyll"
+
 # Themes
 # gem "jekyll-theme-leaf"
 gem "jekyll-theme-chirpy"
 
 group :test do
-  gem "html-proofer" 
+  gem "html-proofer", "~> 3.19"
 end
 
 # Put plugins here
@@ -29,7 +31,7 @@ gem "wdm", "~> 0.1.1", :install_if => [:mingw, :x64_mingw, :mswin]
 
 # Lock `http_parser.rb` gem to `v0.6.x` on JRuby builds since newer versions of the gem
 # do not have a Java counterpart.
-gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
+gem "http_parser.rb", "~> 0.8.0", :platforms => [:jruby]
 
 # Lock jekyll-sass-converter to 2.x on Linux-musl
 if RUBY_PLATFORM =~ /linux-musl/

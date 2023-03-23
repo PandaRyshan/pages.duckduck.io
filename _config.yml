@@ -1,8 +1,8 @@
 # The Site Configuration
 
 # Import the theme
-# theme: jekyll-theme-chirpy
-remote_theme: cotes2020/jekyll-theme-chirpy
+theme: jekyll-theme-chirpy
+# remote_theme: cotes2020/jekyll-theme-chirpy
 # remote_theme: supun-io/jekyll-theme-leaf
 
 # Change the following value to '/PROJECT_NAME' ONLY IF your site type is GitHub Pages Project sites
@@ -34,7 +34,7 @@ description: >-                        # used by seo meta and the atom feed
 url: 'https://pages.duckduck.io'
 
 github:
-  username: duckduckio             # change to your github username
+  username: PandaRyshan             # change to your github username
 
 twitter:
   username: aold619            # change to your twitter username
@@ -43,11 +43,11 @@ social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
   name: Xiaohong Hu
-  email: shawnhu@duckduck.io             # change to your email address
+  email: xiaohong@duckduck.io             # change to your email address
   links:
     # The first element serves as the copyright owner's link
     - https://twitter.com/aold619      # change to your twitter homepage
-    - https://github.com/duckduckio       # change to your github homepage
+    - https://github.com/PandaRyshan       # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
@@ -118,10 +118,10 @@ comments:
 # Self-hosted static assets, optional › https://github.com/cotes2020/chirpy-static-assets
 assets:
   self_host:
-    enabled:      # boolean, keep empty means false
+    enabled: # boolean, keep empty means false
     # specify the Jekyll environment, empty means both
     # only works if `assets.self_host.enabled` is 'true'
-    env:          # [development|production]
+    env: # [development|production]
 
 pwa:
   enabled: true   # the option for PWA feature
@@ -195,7 +195,7 @@ exclude:
   - README.md
   - CHANGELOG.md
   - LICENSE
-  - gulpfile.js
+  - rollup.config.js
   - node_modules
   - package*.json
 
