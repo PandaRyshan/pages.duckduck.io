@@ -68,7 +68,7 @@ gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
 
 ### 使用 Docker
 
-这种方式虽然可以避免环境污染，但缺点显而易见，命令太长，且每次容器启动都需要额外耗时。更多详情请参考 [官方 docker 镜像](https://hub.docker.com/r/jekyll/jekyll) 和 [使用文档](https://github.com/envygeeks/jekyll-docker/blob/master/README.md) 。
+这种方式虽然可以避免安装 ruby，但缺点显而易见，命令太长，且每次容器启动都需要额外耗时，相对而言更加适合开发完成后用于部署。更多详情请参考 [官方 docker 镜像](https://hub.docker.com/r/jekyll/jekyll) 和 [使用文档](https://github.com/envygeeks/jekyll-docker/blob/master/README.md) 。
 
 主要使用方法:
 
