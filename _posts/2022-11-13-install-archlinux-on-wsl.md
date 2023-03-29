@@ -23,7 +23,7 @@ A brief guide to install Arch linux or any other distros linux on Windows WSL.
    LxRunOffline i -n <distro-name> -f <archlinux-bootstrap.tar.gz> -d <install_DIR> -r root.x86_64
    ```
 
-   maybe need to upgrade the new distro to wsl2:
+   you may need to upgrade the new distro to wsl2:
 
    ```shell
    wsl.exe --set-version <distro name> 2
@@ -32,7 +32,12 @@ A brief guide to install Arch linux or any other distros linux on Windows WSL.
 4. add an admin user
 
    ```shell
+   groupadd wheel
    useradd -m -G users,wheel <username>
+
+   # if you want to grant wheel group nopasswd sudo
+   # add the following line code to wheel config in /etc/sudoers.d/
+   %wheel ALL=(ALL:ALL) NOPASSWD: ALL
    ```
 
 5. enable systemd and set default user in `/etc/wsl.conf`
@@ -42,7 +47,7 @@ A brief guide to install Arch linux or any other distros linux on Windows WSL.
    systemd = true
 
    [user]
-   default = username
+   default = <your-username>
    ```
    {: file="/etc/wsl.con"}
 
@@ -61,18 +66,24 @@ A brief guide to install Arch linux or any other distros linux on Windows WSL.
 
 ## Optional
 
-1. add your admin user to sudoers, or add the wheel group if you want.
+* add your admin user to sudoers, or add the wheel group if you want.
 
-   ```shell
-   %wheel ALL=(ALL:ALL) NOPASSWD: ALL
-   ```
-   {: file="/etc/sudoers.d/wheel-users"}
+  ```shell
+  %wheel ALL=(ALL:ALL) NOPASSWD: ALL
+  ```
+  {: file="/etc/sudoers.d/wheel-users"}
 
-2. if you want to share the proxy with the Win, add config in to your profile file.
+* if you want to share the proxy with the Win, add config in to your profile file.
 
-   ```shell
-   export ALL_PROXY=xxx.xxx.xxx.xxx:xxxx
-   ```
+  ```shell
+  export ALL_PROXY=$(tail -1 /etc/resolv.conf | awk '{print $2}'):<win-proxy-port>
+  ```
+
+* to check wsl's eth0 info in Powershell
+
+  ```shell
+  wsl -- ifconfig eth0
+  ```
 
 > Other details or cmd please check [WSL Doc](https://learn.microsoft.com/en-us/windows/wsl/)
 {: .prompt-info }
