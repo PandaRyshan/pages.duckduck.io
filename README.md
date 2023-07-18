@@ -4,4 +4,4 @@ Built with [Jekyll](https://jekyllrb.com/), and [Chirpy theme](https://github.co
 
 ## Install (lang: CN)
 
-[Look here](https://pages.duckduck.io/posts/deploy-github-pages-with-jekyll/).
+[Look here](https://pages.pandas.run/posts/deploy-github-pages-with-jekyll/).
